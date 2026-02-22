@@ -16,11 +16,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -32,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,13 +69,15 @@ fun NumberGuess() {
             text = "Number Guessing Game",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(30.dp))
 
         Text(
             text = message,
             fontSize = 16.sp,
-            color = textColor
+            color = textColor,
+            textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(30.dp))
         OutlinedTextField(
@@ -89,7 +90,8 @@ fun NumberGuess() {
             onValueChange = { number = it },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
-            )
+            ),
+            maxLines = 1
         )
 
         Spacer(modifier = Modifier.height(35.dp))
