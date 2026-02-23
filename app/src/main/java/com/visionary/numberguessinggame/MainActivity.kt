@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,7 +57,9 @@ fun NumberGuess() {
     var message by remember { mutableStateOf("Guess the secret number between 1-100") }
     var secretNumber by remember { mutableIntStateOf(Random.nextInt(1, 101)) }
     var textColor by remember { mutableStateOf(Color.Black) }
-    Log.d("secretNumber", secretNumber.toString())
+    var highScore by rememberSaveable { mutableIntStateOf(0) }
+    var buttonState by remember { mutableStateOf(true) }
+    var buttonText by remember { mutableStateOf("Check") }
     var attempt by remember { mutableIntStateOf(0) }
     Column(
         Modifier
@@ -78,6 +81,12 @@ fun NumberGuess() {
             fontSize = 16.sp,
             color = textColor,
             textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.height(30.dp))
+        Text(
+            text = "High Score : $highScore attempts",
+            fontSize = 18.sp,
+
         )
         Spacer(modifier = Modifier.height(30.dp))
         OutlinedTextField(
@@ -119,18 +128,24 @@ fun NumberGuess() {
                 } else {
                     message = "You guessed the number in $attempt attempts!"
                     textColor= Color.Green
+
+                    if (attempt<highScore || highScore==0){
+                        highScore=attempt
+                    }
+                    buttonState=false
+                    buttonText="Click New Game"
                 }
                 number = ""
-
             },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Black,
                 contentColor = Color.White
-            )
+            ),
+            enabled = buttonState
 
         ) {
-            Text(text = "Check", fontSize = 18.sp)
+            Text(text = buttonText, fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
@@ -143,6 +158,8 @@ fun NumberGuess() {
                 secretNumber = Random.nextInt(1, 101)
                 attempt=0
                 textColor= Color.Black
+                buttonState=true
+                buttonText="Check"
 
             },
             shape = RoundedCornerShape(10.dp),
