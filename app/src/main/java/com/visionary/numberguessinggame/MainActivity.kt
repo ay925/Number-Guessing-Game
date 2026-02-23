@@ -95,6 +95,9 @@ fun NumberGuess() {
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.Black,
                 unfocusedTextColor = Color.Black,
+                focusedBorderColor = Color.Black,
+                cursorColor = Color.Black
+
             ),
             onValueChange = { number = it },
             keyboardOptions = KeyboardOptions(
