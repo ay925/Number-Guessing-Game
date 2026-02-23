@@ -140,6 +140,7 @@ fun NumberGuess() {
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Black,
+                disabledContentColor = Color.Gray,
                 contentColor = Color.White
             ),
             enabled = buttonState
