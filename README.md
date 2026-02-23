@@ -19,4 +19,4 @@ A simple Android game built using Kotlin and Jetpack Compose.
 
 ## 📸 App Screenshot
 
-![App Screenshot](https://github.com/ay925/Number-Guessing-Game/blob/fb5fe37526d9cc6dfa20893a7244b826800fdbf8/Screenshot.png))
+![App Screenshot](https://github.com/ay925/Number-Guessing-Game/blob/fb5fe37526d9cc6dfa20893a7244b826800fdbf8/Screenshot.png)
